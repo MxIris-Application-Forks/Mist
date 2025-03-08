@@ -655,7 +655,9 @@ struct Installer: Decodable, Hashable, Identifiable {
     var name: String {
         var name: String = ""
 
-        if version.range(of: "^14", options: .regularExpression) != nil {
+        if version.range(of: "^15", options: .regularExpression) != nil {
+            name = "macOS Sequoia"
+        } else if version.range(of: "^14", options: .regularExpression) != nil {
             name = "macOS Sonoma"
         } else if version.range(of: "^13", options: .regularExpression) != nil {
             name = "macOS Ventura"
@@ -765,6 +767,10 @@ struct Installer: Decodable, Hashable, Identifiable {
 
     var sierraOrOlder: Bool {
         version.range(of: "^10\\.([7-9]|1[0-2])\\.", options: .regularExpression) != nil
+    }
+
+    var highSierraOrNewer: Bool {
+        bigSurOrNewer || version.range(of: "^10\\.1[3-5]\\.", options: .regularExpression) != nil
     }
 
     var catalinaOrNewer: Bool {

@@ -63,7 +63,7 @@ struct RefreshView: View {
         firmwaresState = .inProgress
 
         do {
-            firmwares = try retrieveFirmwares()
+            firmwares = try await retrieveFirmwares()
             try? await Task.sleep(nanoseconds: nanoseconds)
             firmwaresState = .complete
         } catch {
@@ -84,7 +84,7 @@ struct RefreshView: View {
         installersState = .inProgress
 
         do {
-            installers = try retrieveInstallers()
+            installers = try await retrieveInstallers()
             try? await Task.sleep(nanoseconds: nanoseconds)
             installersState = .complete
         } catch {
@@ -99,18 +99,16 @@ struct RefreshView: View {
         }
     }
 
-    private func retrieveFirmwares() throws -> [Firmware] {
+    private func retrieveFirmwares() async throws -> [Firmware] {
         var firmwares: [Firmware] = []
 
         guard let firmwaresURL: URL = URL(string: Firmware.firmwaresURL) else {
             throw MistError.invalidURL(Firmware.firmwaresURL)
         }
 
-        let string: String = try String(contentsOf: firmwaresURL, encoding: .utf8)
+        let (data, _): (Data, URLResponse) = try await URLSession.shared.data(from: firmwaresURL)
 
-        guard
-            let data: Data = string.data(using: .utf8),
-            let dictionary: [String: Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+        guard let dictionary: [String: Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw MistError.invalidData
         }
 
@@ -118,7 +116,7 @@ struct RefreshView: View {
             throw MistError.missingDevicesKey
         }
 
-        let supportedBuilds: [String] = try Firmware.supportedBuilds()
+        let supportedBuilds: [String] = try await Firmware.supportedBuilds()
 
         for (identifier, device) in devices {
             guard
@@ -153,7 +151,7 @@ struct RefreshView: View {
         return firmwares
     }
 
-    private func retrieveInstallers() throws -> [Installer] {
+    private func retrieveInstallers() async throws -> [Installer] {
         var installers: [Installer] = []
         let catalogURLs: [String] = getCatalogURLs()
 
@@ -163,12 +161,7 @@ struct RefreshView: View {
             }
 
             do {
-                let string: String = try String(contentsOf: url, encoding: .utf8)
-
-                guard let data: Data = string.data(using: .utf8) else {
-                    continue
-                }
-
+                let (data, _): (Data, URLResponse) = try await URLSession.shared.data(from: url)
                 var format: PropertyListSerialization.PropertyListFormat = .xml
 
                 guard
@@ -177,7 +170,7 @@ struct RefreshView: View {
                     continue
                 }
 
-                installers.append(contentsOf: getInstallers(from: productsDictionary).filter { !installers.map(\.id).contains($0.id) })
+                await installers.append(contentsOf: getInstallers(from: productsDictionary).filter { !installers.map(\.id).contains($0.id) })
             } catch {
                 continue
             }
@@ -239,7 +232,7 @@ struct RefreshView: View {
         return catalogURLs
     }
 
-    private func getInstallers(from dictionary: [String: Any]) -> [Installer] {
+    private func getInstallers(from dictionary: [String: Any]) async -> [Installer] {
         var installers: [Installer] = []
         let dateFormatter: DateFormatter = .init()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -249,7 +242,7 @@ struct RefreshView: View {
                 var value: [String: Any] = value as? [String: Any],
                 let date: Date = value["PostDate"] as? Date,
                 let extendedMetaInfo: [String: Any] = value["ExtendedMetaInfo"] as? [String: Any],
-                extendedMetaInfo["InstallAssistantPackageIdentifiers"] as? [String: Any] != nil,
+                extendedMetaInfo["InstallAssistantPackageIdentifiers"] is [String: Any],
                 let distributions: [String: Any] = value["Distributions"] as? [String: Any],
                 let distributionURL: String = distributions["English"] as? String,
                 let url: URL = URL(string: distributionURL) else {
@@ -257,7 +250,8 @@ struct RefreshView: View {
             }
 
             do {
-                let string: String = try String(contentsOf: url, encoding: .utf8)
+                let (data, _): (Data, URLResponse) = try await URLSession.shared.data(from: url)
+                let string: String = .init(decoding: data, as: UTF8.self)
 
                 guard
                     let name: String = nameFromDistribution(string),

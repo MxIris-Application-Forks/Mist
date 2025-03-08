@@ -1,11 +1,51 @@
 # Changelog
 
+## [0.20.1](https://github.com/ninxsoft/Mist/releases/tag/v0.20.1) - 2024-10-05
+
+- Fixed a bug that resulted in macOS installers being created that were only **~500MB** in size
+  - Thanks [hronro](https://github.com/hronro), [weegie247](https://github.com/weegie247), [gjoris](https://github.com/gjoris), [EAZYBLACK](https://github.com/EAZYBLACK), [tifredfr](https://github.com/tifredfr), [clickoncentral](https://github.com/clickoncentral), [dordal](https://github.com/dordal) and [A00736470](https://github.com/A00736470)!
+
+## [0.20](https://github.com/ninxsoft/Mist/releases/tag/v0.20) - 2024-07-14
+
+- Added preliminary support for **macOS Sequoia 15**
+- Fixed a bug that prevented retrieving Apple Developer Signing identities from the keychain correctly
+- Fixed a bug that prevented CSV output being exported correctly
+  - Thanks [NorseGaud](https://github.com/NorseGaud)!
+- Bumped [Sparkle](https://github.com/sparkle-project/Sparkle) version to **2.6.4**
+- Bumped [Yams](https://github.com/jpsim/Yams) version to **5.1.3**
+
+## [0.10](https://github.com/ninxsoft/Mist/releases/tag/v0.10) - 2024-02-26
+
+- Mist now ships logs to the [unified logging system](https://developer.apple.com/documentation/os/logging)!
+  - You can view the **Mist Log** window via the:
+    - **⌘ + L** keyboard shortcut
+    - **Mist > Window** app menu
+    - **Show Mist Log** toolbar button
+  - Logs can also be monitored in Terminal via:
+    - `log stream --predicate 'subsystem=="com.ninxsoft.mist"'`
+  - Thanks [Chilternburt](https://github.com/Chilternburt)!
+- Firmware URLs can now be copied to the system clipboard
+  - Thanks [BigMacAdmin](https://github.com/BigMacAdmin)!
+- Added ISO support for OS X Lion 10.7 and OS X Mountain Lion 10.8
+  - Thanks [madsmtm](https://github.com/madsmtm)!
+- You can now select your favourite Mist app icon via the app **Settings > General** pane
+  - Thanks [stumcd](https://github.com/stumcd)!
+- Fixed an issue that prevented macOS Sierra 10.12 ISOs from building correctly
+  - Thanks [Asnowz](https://github.com/Asnowz), [BenFRC5147](https://github.com/BenFRC5147) and [Archetrix](https://github.com/Archetrix)!
+- Improved error messaging for when the Privileged Helper Tool fails to install
+  - Thanks [DevLiuSir](https://github.com/DevLiuSir), [bhagatparwinder](https://github.com/bhagatparwinder) and [JuanCab](https://github.com/JuanCab)!
+- Bumped [Sparkle](https://github.com/sparkle-project/Sparkle) version to **2.5.2**
+
 ## [0.9.1](https://github.com/ninxsoft/Mist/releases/tag/v0.9.1) - 2023-08-25
 
-- Fixed insecure HTTP URLs for certain Firmware files - thanks [F1248](https://github.com/F1248)!
-- Fixed a bug where downloads were not being cancelled when the Escape key was being pressed - thanks [F1248](https://github.com/F1248)!
-- Rolled back the Bootable Disk Image (ISO) shrinking logic that was preventing the ISOs from booting correctly - thanks [mviron](https://github.com/mviron), [tulgeywood](https://github.com/tulgeywood) and [mibosshard](https://github.com/mibosshard)!
-- Improved the error message output when installing the Privileged Helper Tool failed - thanks [DevLiuSir](https://github.com/DevLiuSir) and [bhagatparwinder](https://github.com/bhagatparwinder)!
+- Fixed insecure HTTP URLs for certain Firmware files
+- Thanks [F1248](https://github.com/F1248)!
+- Fixed a bug where downloads were not being cancelled when the Escape key was being pressed
+- Thanks [F1248](https://github.com/F1248)!
+- Rolled back the Bootable Disk Image (ISO) shrinking logic that was preventing the ISOs from booting correctly
+  - Thanks [mviron](https://github.com/mviron), [tulgeywood](https://github.com/tulgeywood) and [mibosshard](https://github.com/mibosshard)!
+- Improved the error message output when installing the Privileged Helper Tool failed
+  - Thanks [DevLiuSir](https://github.com/DevLiuSir) and [bhagatparwinder](https://github.com/bhagatparwinder)!
 - Bumped [Yams](https://github.com/jpsim/Yams) version to **5.0.6**
 
 ## [0.9](https://github.com/ninxsoft/Mist/releases/tag/v0.9) - 2023-06-26
@@ -93,7 +133,7 @@
   - Thanks [PicoMitchell](https://github.com/PicoMitchell)!
 - Window tabs are now disabled
   - Thanks [PicoMitchell](https://github.com/PicoMitchell)!
-- The **Close Window (⌘-W)** keyboard shortcut is now available once again
+- The **Close Window (⌘ + W)** keyboard shortcut is now available once again
   - Thanks [PicoMitchell](https://github.com/PicoMitchell)!
 - CSV exports are now working correctly again
   - Thanks [JoGlib](https://github.com/JoGilb)!

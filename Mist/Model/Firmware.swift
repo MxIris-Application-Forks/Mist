@@ -51,7 +51,9 @@ struct Firmware: Decodable, Hashable, Identifiable {
     var name: String {
         var name: String = ""
 
-        if version.range(of: "^14", options: .regularExpression) != nil {
+        if version.range(of: "^15", options: .regularExpression) != nil {
+            name = "macOS Sequoia"
+        } else if version.range(of: "^14", options: .regularExpression) != nil {
             name = "macOS Sonoma"
         } else if version.range(of: "^13", options: .regularExpression) != nil {
             name = "macOS Ventura"
@@ -116,7 +118,7 @@ struct Firmware: Decodable, Hashable, Identifiable {
     /// - Throws: An error if unable to retrieve a list of supported Firmware builds for this Mac.
     ///
     /// - Returns: An array of Firmware build strings.
-    static func supportedBuilds() throws -> [String] {
+    static func supportedBuilds() async throws -> [String] {
         guard
             let architecture: Architecture = Hardware.architecture,
             architecture == .appleSilicon,
@@ -125,10 +127,9 @@ struct Firmware: Decodable, Hashable, Identifiable {
             return []
         }
 
-        let string: String = try String(contentsOf: url)
+        let (data, _): (Data, URLResponse) = try await URLSession.shared.data(from: url)
 
         guard
-            let data: Data = string.data(using: .utf8),
             let dictionary: [String: Any] = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let array: [[String: Any]] = dictionary["firmwares"] as? [[String: Any]] else {
             return []

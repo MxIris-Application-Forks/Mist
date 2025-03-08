@@ -12,8 +12,8 @@ jobs:
     name: Build
     runs-on: macos-13
     steps:
-      - uses: actions/checkout@v3
-      - uses: swift-actions/setup-swift@v1
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
       - name: Install Apple Developer ID Application Certificate
         env:
           APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE: ${{ secrets.APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE }}
@@ -32,8 +32,12 @@ jobs:
           security import "$CERTIFICATE_PATH" -P "$APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
           security import "$CERTIFICATE_AUTHORITY_PATH" -P "$APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" -A -t cert -f pkcs7 -k "$KEYCHAIN_PATH"
           security list-keychain -d user -s "$KEYCHAIN_PATH"
+      - name: Select Xcode version
+        run: sudo xcode-select --switch "/Applications/Xcode_16.1.app"
       - name: Archive Mist
-        run: xcodebuild -scheme Mist clean archive -configuration release -archivePath Mist -quiet
+        run: |
+          xcodebuild -scheme "Mist" -configuration "release" -destination "platform=macOS,arch=arm64" -quiet clean
+          xcodebuild -scheme "Mist" -configuration "release" -destination "platform=macOS,arch=arm64" -quiet -skipPackagePluginValidation archive -archivePath "Mist"
       - name: Export Mist
         run: xcodebuild -exportArchive -archivePath Mist.xcarchive -exportPath Export -exportOptionsPlist ExportOptions.plist
       - name: Print Mist version

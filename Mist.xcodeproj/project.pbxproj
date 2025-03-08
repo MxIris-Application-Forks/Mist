@@ -55,6 +55,8 @@
 		39252ABB285C7D3800956C74 /* SettingsInstallersCatalogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39252ABA285C7D3800956C74 /* SettingsInstallersCatalogsView.swift */; };
 		39252ABD285C8FFC00956C74 /* ListRowInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39252ABC285C8FFC00956C74 /* ListRowInstaller.swift */; };
 		39252AC3285CA5FE00956C74 /* InstallerExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39252AC2285CA5FE00956C74 /* InstallerExportView.swift */; };
+		392B30082B8B1D5C00B34BA4 /* SettingsGeneralAppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392B30072B8B1D5C00B34BA4 /* SettingsGeneralAppIconView.swift */; };
+		392B300A2B8B1E3900B34BA4 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392B30092B8B1E3900B34BA4 /* AppIcon.swift */; };
 		3935F47428643AB800760AB0 /* UNNotificationCategory+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935F47328643AB800760AB0 /* UNNotificationCategory+Extension.swift */; };
 		3935F47628643AF000760AB0 /* UNNotificationAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935F47528643AF000760AB0 /* UNNotificationAction+Extension.swift */; };
 		3935F47828643B1F00760AB0 /* UserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935F47728643B1F00760AB0 /* UserNotificationCenterDelegate.swift */; };
@@ -93,6 +95,11 @@
 		398734D028603D9E00B4C357 /* UInt8+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398734CF28603D9E00B4C357 /* UInt8+Extension.swift */; };
 		398734D228603DE700B4C357 /* [UInt8]+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398734D128603DE700B4C357 /* [UInt8]+Extension.swift */; };
 		398734D4286046B000B4C357 /* UInt32+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398734D3286046B000B4C357 /* UInt32+Extension.swift */; };
+		398A131D2B78AA3700F96F7E /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A131C2B78AA3700F96F7E /* LogManager.swift */; };
+		398A131F2B78AF0B00F96F7E /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A131E2B78AF0B00F96F7E /* LogLevel.swift */; };
+		398A13222B78BA6D00F96F7E /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A13212B78BA6D00F96F7E /* LogView.swift */; };
+		398A13472B78F22A00F96F7E /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A13462B78F22A00F96F7E /* LogEntry.swift */; };
+		398BE6B52B62450500FE0C29 /* FloatingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398BE6B42B62450500FE0C29 /* FloatingAlert.swift */; };
 		39CA25E32941D8BB0030711E /* FileAttributesUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA25E22941D8BB0030711E /* FileAttributesUpdater.swift */; };
 		39CB5E3D293F5C2E00CFDBB8 /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB5E3C293F5C2E00CFDBB8 /* Catalog.swift */; };
 		39CB5E3F2941486D00CFDBB8 /* CatalogSeedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB5E3E2941486D00CFDBB8 /* CatalogSeedType.swift */; };
@@ -145,6 +152,16 @@
 		5795700D2A31B081004C7051 /* MistActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5795700C2A31B081004C7051 /* MistActionButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		39EAEAC72C8813AB00BA91B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3904519E2856E1D800E0B563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39CF559C28614DD8006FB5D2;
+			remoteInfo = MistHelperTool;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		39AD68E1286149CE0021CCA8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -155,15 +172,6 @@
 				39CF55AB286154D1006FB5D2 /* com.ninxsoft.mist.helper in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39CF559B28614DD8006FB5D2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -216,6 +224,8 @@
 		39252ABA285C7D3800956C74 /* SettingsInstallersCatalogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInstallersCatalogsView.swift; sourceTree = "<group>"; };
 		39252ABC285C8FFC00956C74 /* ListRowInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowInstaller.swift; sourceTree = "<group>"; };
 		39252AC2285CA5FE00956C74 /* InstallerExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerExportView.swift; sourceTree = "<group>"; };
+		392B30072B8B1D5C00B34BA4 /* SettingsGeneralAppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralAppIconView.swift; sourceTree = "<group>"; };
+		392B30092B8B1E3900B34BA4 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		3935F47328643AB800760AB0 /* UNNotificationCategory+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNNotificationCategory+Extension.swift"; sourceTree = "<group>"; };
 		3935F47528643AF000760AB0 /* UNNotificationAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNNotificationAction+Extension.swift"; sourceTree = "<group>"; };
 		3935F47728643B1F00760AB0 /* UserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationCenterDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +260,11 @@
 		398734CF28603D9E00B4C357 /* UInt8+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+Extension.swift"; sourceTree = "<group>"; };
 		398734D128603DE700B4C357 /* [UInt8]+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "[UInt8]+Extension.swift"; sourceTree = "<group>"; };
 		398734D3286046B000B4C357 /* UInt32+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32+Extension.swift"; sourceTree = "<group>"; };
+		398A131C2B78AA3700F96F7E /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogManager.swift; path = Mist/Helpers/LogManager.swift; sourceTree = SOURCE_ROOT; };
+		398A131E2B78AF0B00F96F7E /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		398A13212B78BA6D00F96F7E /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		398A13462B78F22A00F96F7E /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		398BE6B42B62450500FE0C29 /* FloatingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingAlert.swift; sourceTree = "<group>"; };
 		39CA25E22941D8BB0030711E /* FileAttributesUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileAttributesUpdater.swift; sourceTree = "<group>"; };
 		39CB5E3C293F5C2E00CFDBB8 /* Catalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		39CB5E3E2941486D00CFDBB8 /* CatalogSeedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSeedType.swift; sourceTree = "<group>"; };
@@ -409,6 +424,7 @@
 				393F35BD2864197F005B7165 /* PrivilegedHelperTool.swift */,
 				3935F4CC286C6A5D00760AB0 /* ProcessKiller.swift */,
 				574199D12AED15420086493F /* PropertyListUpdater.swift */,
+				398A131C2B78AA3700F96F7E /* LogManager.swift */,
 				3935F4C6286B54E200760AB0 /* SparkleUpdater.swift */,
 				398734C328600E6E00B4C357 /* TaskManager.swift */,
 				398734C5286011C300B4C357 /* Validator.swift */,
@@ -419,10 +435,13 @@
 		390451C32856E4A500E0B563 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				392B30092B8B1E3900B34BA4 /* AppIcon.swift */,
 				573A23612A28711C00EC9470 /* Architecture.swift */,
 				39CB5E3C293F5C2E00CFDBB8 /* Catalog.swift */,
 				390451E428574F0000E0B563 /* CatalogType.swift */,
 				39CB5E3E2941486D00CFDBB8 /* CatalogSeedType.swift */,
+				398A131E2B78AF0B00F96F7E /* LogLevel.swift */,
+				398A13462B78F22A00F96F7E /* LogEntry.swift */,
 				398734CB28603D5F00B4C357 /* Chunklist.swift */,
 				398734CD28603D7F00B4C357 /* Chunk.swift */,
 				390451CD2856F42800E0B563 /* DownloadType.swift */,
@@ -456,6 +475,7 @@
 				393F35C128641E1F005B7165 /* HeaderView.swift */,
 				3935F49C286ABE4D00760AB0 /* FooterView.swift */,
 				390451D728573A2500E0B563 /* ExportListView.swift */,
+				398A13212B78BA6D00F96F7E /* LogView.swift */,
 				3935F4A0286ACCE100760AB0 /* List */,
 				393F35BF28641D86005B7165 /* Activity */,
 				393F35C028641D8F005B7165 /* Refresh */,
@@ -538,6 +558,7 @@
 			children = (
 				39252AA2285C3CC400956C74 /* CodesigningPickerView.swift */,
 				39252AA4285C463A00956C74 /* DynamicTextView.swift */,
+				398BE6B42B62450500FE0C29 /* FloatingAlert.swift */,
 				39252A86285ACE9C00956C74 /* FooterText.swift */,
 				5795700C2A31B081004C7051 /* MistActionButtonStyle.swift */,
 				39252AA0285C2A1600956C74 /* PaddedDivider.swift */,
@@ -560,6 +581,7 @@
 				3935F47B2864434B00760AB0 /* SettingsGeneralNotificationsView.swift */,
 				39252AB0285C5C1E00956C74 /* SettingsGeneralRetryView.swift */,
 				39252AB2285C5D7700956C74 /* SettingsGeneralUpdatesView.swift */,
+				392B30072B8B1D5C00B34BA4 /* SettingsGeneralAppIconView.swift */,
 				39252A88285AD0AB00956C74 /* SettingsHeaderView.swift */,
 				39FF05F52859850F00A86670 /* SettingsFirmwaresView.swift */,
 				39252A78285A85AF00956C74 /* SettingsInstallersView.swift */,
@@ -593,6 +615,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				39EAEAC82C8813AB00BA91B6 /* PBXTargetDependency */,
 			);
 			name = Mist;
 			packageProductDependencies = (
@@ -629,7 +652,6 @@
 				39CF55BF28616081006FB5D2 /* Run Build Script */,
 				39CF559928614DD8006FB5D2 /* Sources */,
 				39CF559A28614DD8006FB5D2 /* Frameworks */,
-				39CF559B28614DD8006FB5D2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -652,7 +674,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					390451A52856E1D900E0B563 = {
 						CreatedOnToolsVersion = 14.0;
@@ -802,6 +824,7 @@
 				39CF56172861BE66006FB5D2 /* FileCopier.swift in Sources */,
 				39252AB9285C7BC700956C74 /* SettingsInstallersCacheView.swift in Sources */,
 				390451C62856E80C00E0B563 /* RefreshView.swift in Sources */,
+				398A131D2B78AA3700F96F7E /* LogManager.swift in Sources */,
 				39252A97285BF8BC00956C74 /* MistTaskType.swift in Sources */,
 				39CF56212861C992006FB5D2 /* DiskImageMounter.swift in Sources */,
 				398734CC28603D5F00B4C357 /* Chunklist.swift in Sources */,
@@ -829,8 +852,10 @@
 				39252A9F285C140D00956C74 /* ShellExecutor.swift in Sources */,
 				39CF561A2861C2D1006FB5D2 /* DirectoryCreator.swift in Sources */,
 				39252A77285A849F00956C74 /* AppDelegate.swift in Sources */,
+				398A13472B78F22A00F96F7E /* LogEntry.swift in Sources */,
 				3935F47C2864434B00760AB0 /* SettingsGeneralNotificationsView.swift in Sources */,
 				3935F4C7286B54E200760AB0 /* SparkleUpdater.swift in Sources */,
+				398A13222B78BA6D00F96F7E /* LogView.swift in Sources */,
 				393F35BE2864197F005B7165 /* PrivilegedHelperTool.swift in Sources */,
 				573A23622A28711C00EC9470 /* Architecture.swift in Sources */,
 				390451B92856E24200E0B563 /* Firmware.swift in Sources */,
@@ -843,6 +868,8 @@
 				39FF05F62859850F00A86670 /* SettingsFirmwaresView.swift in Sources */,
 				3935F4A6286AD3E100760AB0 /* ActivityHeaderView.swift in Sources */,
 				3935F480286551FB00760AB0 /* Double+Extension.swift in Sources */,
+				398BE6B52B62450500FE0C29 /* FloatingAlert.swift in Sources */,
+				392B30082B8B1D5C00B34BA4 /* SettingsGeneralAppIconView.swift in Sources */,
 				39252ABD285C8FFC00956C74 /* ListRowInstaller.swift in Sources */,
 				3935F49D286ABE4D00760AB0 /* FooterView.swift in Sources */,
 				390451CC2856F23100E0B563 /* ScaledSystemImage.swift in Sources */,
@@ -850,6 +877,7 @@
 				3935F47428643AB800760AB0 /* UNNotificationCategory+Extension.swift in Sources */,
 				398734D028603D9E00B4C357 /* UInt8+Extension.swift in Sources */,
 				39252AB7285C718C00956C74 /* FileManager+Extension.swift in Sources */,
+				398A131F2B78AF0B00F96F7E /* LogLevel.swift in Sources */,
 				398734C428600E6E00B4C357 /* TaskManager.swift in Sources */,
 				390451D62856F7FE00E0B563 /* UInt64+Extension.swift in Sources */,
 				3935F47E2864813B00760AB0 /* DownloadManager.swift in Sources */,
@@ -861,6 +889,7 @@
 				39D68B892861369B00A7848C /* InstallerCreator.swift in Sources */,
 				39CF56312862A8C5006FB5D2 /* InstallMediaCreator.swift in Sources */,
 				39252AB1285C5C1E00956C74 /* SettingsGeneralRetryView.swift in Sources */,
+				392B300A2B8B1E3900B34BA4 /* AppIcon.swift in Sources */,
 				390451DC28573F1000E0B563 /* Dictionary+Extension.swift in Sources */,
 				390451D02856F63700E0B563 /* Installer.swift in Sources */,
 				3935F47628643AF000760AB0 /* UNNotificationAction+Extension.swift in Sources */,
@@ -939,6 +968,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39EAEAC82C8813AB00BA91B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39CF559C28614DD8006FB5D2 /* MistHelperTool */;
+			targetProxy = 39EAEAC72C8813AB00BA91B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		390451B32856E1DA00E0B563 /* Debug */ = {
@@ -1067,14 +1104,14 @@
 		390451B62856E1DA00E0B563 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon - Sequoia";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.20.1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7K3HVCLV7Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1090,7 +1127,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.20.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ninxsoft.mist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1101,14 +1138,14 @@
 		390451B72856E1DA00E0B563 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon - Sequoia";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.20.1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7K3HVCLV7Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1124,7 +1161,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.20.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ninxsoft.mist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1179,7 +1216,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.10;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7K3HVCLV7Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1188,7 +1225,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mist;
 				LAUNCHDPLIST_FILE = "$(SRCROOT)/MistHelperTool/launchd.plist";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.10;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
 					__TEXT,
@@ -1215,7 +1252,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0.9.1;
+				CURRENT_PROJECT_VERSION = 0.10;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7K3HVCLV7Z;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1224,7 +1261,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Mist;
 				LAUNCHDPLIST_FILE = "$(SRCROOT)/MistHelperTool/launchd.plist";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 0.10;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
 					__TEXT,
@@ -1291,7 +1328,7 @@
 			repositoryURL = "https://github.com/jpsim/Yams";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.6;
+				minimumVersion = 5.1.3;
 			};
 		};
 		3935F4C3286B546A00760AB0 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
@@ -1299,7 +1336,7 @@
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.2;
+				minimumVersion = 2.6.4;
 			};
 		};
 		39CF55A8286154A5006FB5D2 /* XCRemoteSwiftPackageReference "Blessed" */ = {

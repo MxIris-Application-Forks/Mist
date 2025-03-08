@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
   build:
     name: Draft New Release
-    runs-on: macos-13
+    runs-on: macos-14
     env:
       APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE: ${{ secrets.APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE }}
       APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD }}
@@ -18,8 +18,8 @@ jobs:
       APPLE_DEVELOPER_TEAM_ID: "7K3HVCLV7Z"
       KEYCHAIN_FILE: "apple-developer.keychain-db"
     steps:
-      - uses: actions/checkout@v3
-      - uses: swift-actions/setup-swift@v1
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
       - name: Install Apple Developer ID Certificates
         run: |
           APPLE_DEVELOPER_ID_APPLICATION_CERTIFICATE_PATH="$RUNNER_TEMP/apple-developer-id-application-certificate.p12"
@@ -35,8 +35,12 @@ jobs:
           security import "$APPLE_DEVELOPER_ID_INSTALLER_CERTIFICATE_PATH" -P "$APPLE_DEVELOPER_ID_INSTALLER_CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$RUNNER_TEMP/$KEYCHAIN_FILE"
           security import "$APPLE_DEVELOPER_CERTIFICATE_AUTHORITY_PATH" -P "$APPLE_DEVELOPER_CERTIFICATE_PASSWORD" -A -t cert -f pkcs7 -k "$RUNNER_TEMP/$KEYCHAIN_FILE"
           security list-keychain -d user -s "$RUNNER_TEMP/$KEYCHAIN_FILE"
+      - name: Select Xcode version
+        run: sudo xcode-select --switch "/Applications/Xcode_16.1.app"
       - name: Archive Mist
-        run: xcodebuild -scheme Mist clean archive -configuration release -archivePath Mist -quiet
+        run: |
+          xcodebuild -scheme "Mist" -configuration "release" -destination "platform=macOS,arch=arm64" -quiet clean
+          xcodebuild -scheme "Mist" -configuration "release" -destination "platform=macOS,arch=arm64" -quiet -skipPackagePluginValidation archive -archivePath "Mist"
       - name: Export Mist
         run: xcodebuild -exportArchive -archivePath Mist.xcarchive -exportPath Export -exportOptionsPlist ExportOptions.plist
       - name: Notarize Mist
@@ -66,19 +70,11 @@ jobs:
           PACKAGE_FILENAME="Mist.${{ env.APP_VERSION }}.pkg"
           echo "PACKAGE_FILENAME=$PACKAGE_FILENAME" >> "$GITHUB_ENV"
           mkdir -p "$PACKAGE_TEMP/Applications"
-          mkdir -p "$PACKAGE_TEMP/Library/LaunchDaemons"
-          mkdir -p "$PACKAGE_TEMP/Library/PrivilegedHelperTools"
           ditto "Export/Mist.app" "$PACKAGE_TEMP/Applications/Mist.app"
-          cp "com.ninxsoft.mist.helper.plist" "$PACKAGE_TEMP/Library/LaunchDaemons/com.ninxsoft.mist.helper.plist"
-          cp "Export/Mist.app/Contents/Library/LaunchServices/com.ninxsoft.mist.helper" "$PACKAGE_TEMP/Library/PrivilegedHelperTools/com.ninxsoft.mist.helper"
-          chmod 644 "$PACKAGE_TEMP/Library/LaunchDaemons/com.ninxsoft.mist.helper.plist"
-          chmod 544 "$PACKAGE_TEMP/Library/PrivilegedHelperTools/com.ninxsoft.mist.helper"
-          rm "Scripts/uninstall.sh"
           pkgbuild --root "$PACKAGE_TEMP" \
                    --identifier "$PACKAGE_IDENTIFIER" \
                    --version "${{ env.APP_VERSION }}" \
                    --min-os-version "12.0" \
-                   --scripts "Scripts" \
                    --sign "$APPLE_DEVELOPER_ID_INSTALLER_SIGNING_IDENTITY" \
                    "$PACKAGE_FILENAME"
       - name: Notarize Package
@@ -86,7 +82,7 @@ jobs:
           xcrun notarytool submit "${{ env.PACKAGE_FILENAME }}" --apple-id "$APPLE_DEVELOPER_APPLE_ID" --password "$APPLE_DEVELOPER_APPLE_ID_PASSWORD" --team-id "$APPLE_DEVELOPER_TEAM_ID" --wait
           xcrun stapler staple "${{ env.PACKAGE_FILENAME }}"
       - name: Draft New Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: ${{ env.APP_VERSION }}
           tag_name: v${{ env.APP_VERSION }}
